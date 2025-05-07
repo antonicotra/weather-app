@@ -5,7 +5,7 @@ import { LandingComponent } from './components/landing/landing.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LandingComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

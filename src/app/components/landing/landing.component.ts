@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CityButtonComponent } from './city-button/city-button.component';
-import { SearchbarComponent } from '../searchbar/searchbar.component';
+import { SearchbarComponent } from '../shared/searchbar/searchbar.component';
 
 @Component({
   selector: 'app-landing',
