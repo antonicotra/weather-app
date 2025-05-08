@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, input } from '@angular/core';
+import { Component, effect, inject, input } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,6 +7,8 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { WeatherService } from '../../../services/weather.service';
+import { WeatherResponse } from '../../../models/weather';
 
 @Component({
   selector: 'app-searchbar',
@@ -17,6 +19,8 @@ import {
 export class SearchbarComponent {
   searchForm!: FormGroup;
   selectedCity = input<string>('');
+  private readonly weatherService = inject(WeatherService);
+  weatherData: WeatherResponse | undefined;
 
   constructor(private fb: FormBuilder) {}
 
@@ -27,8 +31,15 @@ export class SearchbarComponent {
   }
 
   onSearch(): void {
-    if(this.searchForm.valid) {
-    console.log('Search query:', this.searchForm.value.searchQuery);
+    if (this.searchForm.valid) {
+      this.weatherService
+        .getWeather(this.searchForm.value.searchQuery)
+        .subscribe((response) => {
+          if (response) {
+            this.weatherData = response;
+            console.log('Weather data:', this.weatherData);
+          }
+        });
     }
   }
 
@@ -40,5 +51,4 @@ export class SearchbarComponent {
       console.log('City value updated:', cityValue);
     }
   });
-  
 }

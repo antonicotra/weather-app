@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { environment } from '../environments/enviroment';
-import { LandingComponent } from './components/landing/landing.component';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
