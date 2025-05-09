@@ -1,6 +1,11 @@
 <div class="w-full">
   <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="relative">
-    <div class="flex items-center justify-between w-full max-w-md p-2 rounded-lg">
+    <div
+      class="flex items-center justify-between w-full max-w-md p-2 rounded-lg"
+    >
+      <div
+        class="absolute inset-0 rounded-lg bg-gradient-to-r from-sky-600 to-blue-600 opacity-50 blur-lg"
+      ></div>
       <input
         id="search-input"
         [value]="selectedCity()"
@@ -15,16 +20,16 @@
         type="submit"
         [disabled]="searchForm.invalid"
         [ngClass]="{
-          'opacity-50':
-            searchForm.invalid
+          'opacity-50': searchForm.invalid
         }"
       >
-        <img src="../../../assets/search.svg" alt="search icon" class="w-4 h-4"/>
+        <img
+          src="../../../assets/search.svg"
+          alt="search icon"
+          class="w-4 h-4"
+        />
         <span class="ml-2">Search</span>
       </button>
     </div>
   </form>
 </div>
-<!--   <div
-    class="absolute inset-0 rounded-lg bg-gradient-to-r from-sky-600 to-blue-600 opacity-50 blur-lg"
-  ></div> -->
