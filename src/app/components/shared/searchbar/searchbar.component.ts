@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { WeatherService } from '../../../services/weather.service';
 import { WeatherResponse } from '../../../models/weather';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-searchbar',
@@ -21,8 +22,7 @@ export class SearchbarComponent {
   selectedCity = input<string>('');
   private readonly weatherService = inject(WeatherService);
   weatherData: WeatherResponse | undefined;
-
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
@@ -41,6 +41,7 @@ export class SearchbarComponent {
           }
         });
     }
+    this.router.navigate(['/homepage'], { state: { data: this.weatherData } });
   }
 
   cityEffect = effect(() => {
